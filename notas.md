@@ -1,7 +1,7 @@
 La idea para hacer esto funcionar es la siguiente:
 
 Como se va a trabajar en distintos algoritmos por separado, __lo ideal sería que cada uno sea una clase con una función RUN()__, llamada igual dentro de cada clase, y con parámetros para cada valor de entrada necesario para aplicar el algoritmo. Adicionalmente,
-RUN() deberá devolver los resultados como un array de tuplas de x e y de cada punto calculado. Un array de tuplas se declara asi: `(int x, int y)[] puntos = new[] {(0, 0) (1, 1)}` 
+RUN() deberá devolver los resultados como una lista de tuplas de x e y de cada punto calculado. Una lista de tuplas se declara así: `List<(int x, int y)> puntos = new List<(int x, int y)>()` 
 
 Las clases son las siguientes:
 - Program: Con el main(), pondremos aquí un menu para elegir el algoritmo a utilizar, instanciarlo y utilizarlo. También se encargará de imprimir en consola los resultados de cada  (Niko)
