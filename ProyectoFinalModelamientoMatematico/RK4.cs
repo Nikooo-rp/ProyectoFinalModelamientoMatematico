@@ -4,11 +4,11 @@ using System.Text;
 
 namespace ProyectoFinalModelamientoMatematico
 {
-    public class RK4
+    public class RK4 : Algoritmo
     {
        
-        public List<(double x, double y)> Run(Func<double, double, double> f,
-                                              double x0, double y0, double h, double xFinal)
+        public override List<(double x, double y)> Run(Func<double, double, double> f,
+                                                      double x0, double y0, double h, double xFinal)
         {
             Validar(x0, h, xFinal, out int pasos);
 
@@ -30,7 +30,7 @@ namespace ProyectoFinalModelamientoMatematico
         }
 
       
-        public List<(double x, double[] y)> RunSistema(Func<double, double[], double[]> f,
+        public override List<(double x, double[] y)> RunSistema(Func<double, double[], double[]> f,
                                                        double x0, double[] y0, double h, double xFinal)
         {
             Validar(x0, h, xFinal, out int pasos);
