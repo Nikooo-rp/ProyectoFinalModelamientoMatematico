@@ -6,7 +6,7 @@ namespace ProyectoFinalModelamientoMatematico
     internal class Program
     {
         // Ecuación única: y' = f(x, y). Cambiar según el problema.
-        static double F(double x, double y) => 4 * x - 2 * y;
+        static double F(double x, double y) => 2 * x - 3 * y + 1;
 
         // Sistema: Y' = G(x, Y). Cambiar según el problema.
         // Ejemplo: y'' + y = 0  ->  y1 = y, y2 = y'  ->  y1' = y2, y2' = -y1
@@ -72,8 +72,8 @@ namespace ProyectoFinalModelamientoMatematico
                 switch (op)
                 {
                     case "3": return new RK4().RunSistema(G, x0, y0, h, xf);
-                    // case "1": return new Euler().RunSistema(G, x0, y0, h, xf);
-                    // case "2": return new EulerMejorado().RunSistema(G, x0, y0, h, xf);
+                    case "1": return new Euler().RunSistema(G, x0, y0, h, xf);
+                    case "2": return new EulerMejorado().RunSistema(G, x0, y0, h, xf);
                     case "4": return new Multipaso().RunSistema(G, x0, y0, h, xf);
                     default: throw new NotImplementedException("Método aún no disponible para sistemas.");
                 }
@@ -84,8 +84,8 @@ namespace ProyectoFinalModelamientoMatematico
                 case "3":
                     return new RK4().Run(F, x0, y0[0], h, xf)
                                     .Select(p => (x: p.x, y: new[] { p.y })).ToList();
-                // case "1": return new Euler().Run(F, x0, y0[0], h, xf).Select(p => (x: p.x, y: new[] { p.y })).ToList();
-                // case "2": ...
+                case "1": return new Euler().Run(F, x0, y0[0], h, xf).Select(p => (x: p.x, y: new[] { p.y })).ToList();
+                case "2": return new EulerMejorado().Run(F, x0, y0[0], h, xf).Select(p => (x: p.x, y: new[] { p.y })).ToList();
                 case "4":
                     return new Multipaso().Run(F, x0, y0[0], h, xf)
                                           .Select(p => (x: p.x, y: new[] { p.y })).ToList();
